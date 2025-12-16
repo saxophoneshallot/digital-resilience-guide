@@ -1,115 +1,67 @@
 # Digital Identity Resilience
 
-**A comprehensive guide to recovering from catastrophic digital loss**
-
 ---
 
 ## Purpose
 
-This project provides a practical framework for protecting and recovering your digital identity in scenarios ranging from routine device theft to total loss of all physical possessions.
+This is a how-to guide to secure your online accounts and digital identity. To see the guide itself, go to the Key Documents section.
 
-**Core Goal:** Enable recovery using only biometrics and a memorized secret, without dependency on any single provider or physical device.
+These guidelines prevent, mitigate, and recover from these scenarios:
+- I lost my phone or somebody has stolen my laptop
+- I lost my money because my bank password was cracked
+- I can't get into an account through my own user stupidity
+- I got locked out of an account and now can't use it to 2FA other accounts
+- I store all my passwords in one place and that service got taken out by a volcano
 
----
-
-## The Problem
-
-Most people's digital lives are fragile:
-- Lose your phone → Lose access to 2FA codes
-- Google account locked → Lose everything tied to it
-- House burglarized → Lose all devices and recovery materials
-- Robbed while traveling → Lose phone, laptop, wallet, ID
-
-**This guide solves that problem.**
+They are not meant to prevent sophisticated attacks, extreme coercion, or nation-state actors.
 
 ---
 
-## Documentation Structure
+## Overview
 
-### 📊 [Threat Scenarios](THREAT_SCENARIOS.md)
-Models security scenarios from normal operations through nation-state threats:
-- **Level 0:** Happy paths (daily usage)
-- **Level 1:** Opportunistic attacks (theft, pickpocketing)
-- **Level 2:** Targeted theft (burglary, mugging)
-- **Level 3:** Sophisticated attacks (surveillance + social engineering)
-- **Level 4:** Extreme coercion (kidnapping, detention)
-- **Level 5:** Advanced Persistent Threat (nation-state targeting)
+### Principles
+- Layers of security. For example, 2FA means just stealing a password is insufficient, secure vaults protect less secure informtion, etc.
+- Prioritize the most secure options. For example, biometric authentication requires your presence, hardware 2FA requires the physical item, etc.
+- Must be practical ot use. The world's most secure method may be so inconvenient that you'd never use it regularly in day to day life.
+- Recovery balanced with access prevention. You don't want to limit access so much that you can never recover your account when needed.
+- Avoid circular dependencies. For example, using Google Voice as a 2FA for your Google email may lock you out permanently.
 
-Each scenario includes attack vectors, security controls, detection mechanisms, and recovery procedures. This guide focuses on Levels 0-3 where technical security alone can be effective; Levels 4-5 require professional organizational support.
+### Core Approach
+We believe the best way to achieve all the above principles is using 4 things at the core:
+1. Master diceware passphrase you remember
+2. Hardware 2FA device such as a Yubikey
+3. Password manager such as Bitwarden
+4. Encrypted recovery bundle in accessible place
 
-### 🔧 [Implementation Guide](IMPLEMENTATION_GUIDE.md)
-Step-by-step technical setup:
-- Password manager hardening (Bitwarden focus)
-- Hardware security key deployment (YubiKey, etc.)
-- Encrypted recovery bundle creation
-- Off-site backup strategies
-- Device hardening and biometric configuration
-- Verification testing and maintenance schedules
+### Components
 
-### 🚨 [Recovery Procedures](RECOVERY_PROCEDURES.md)
-Emergency checklists and detailed recovery instructions:
-- Scenario-specific recovery steps
-- Complete identity rebuild from zero
-- Post-recovery security audit
-- Troubleshooting recovery issues
+*Your Devices*
+- Configure so if somebody has only the device, they can't compromise your accounts.
+  
+*Key Accounts (email, banking, social media, etc.)*
+- These are ultimately what we're trying to protect.
+- Each should have a unique password, so they are isolated from each other.
+- Each should require a 2FA method. When possible, choose the best 2FA method (biometric > hardware > TOTP > email / SMS).
 
----
+*Password manager (Bitwarden, 1Password, etc.)*
+- This is what you'll use on a daily basis as the most secure practical option.
+- Secured by a diceware password and a hardware 2FA method.
 
-## Core Security Principles
+*Other 2FA methods (SMS, TOTP, etc.)*
+- Each of these has unique weaknesses that we mitigate in further detail.
 
-### 1. No Single Point of Failure
-Never depend on a single provider, device, or authentication method for account recovery.
-
-### 2. Defense in Depth
-Layer independent security controls:
-- Password manager protected by master password
-- Critical accounts protected by hardware keys
-- Recovery bundle separately encrypted
-- Off-site backups independent of primary devices
-
-### 3. Biometrics for Convenience, Not Security
-Biometrics unlock local devices quickly, but memorized secrets enable recovery from zero.
+*Recovery bundle*
+- Necessary for you to make sure you never lose your accounts.
+- Needs to be encrypted, obscure, and difficult for anybody to connect to you.
+- Needs to be accessible in event of emergency where you've lost devices and account access.
 
 ---
 
-## Technology Choices
+## Key Documents
 
-This guide recommends specific tools as examples, but the principles apply to alternatives:
-
-**Password Managers:**
-- **Recommended:** Bitwarden (open source, affordable, good security)
-- Alternatives: 1Password, KeePass, pass
-
-**Hardware Keys:**
-- **Recommended:** YubiKey 5 series (FIDO2/U2F support, durable)
-- Alternatives: Google Titan, Thetis, Solo Keys
-
-**Encryption:**
-- **Recommended:** age (modern, simple, secure)
-- Alternatives: GPG, OpenSSL AES-256
-
-**Cloud Storage:**
-- Use whatever you trust, but separate from primary email provider
-- Examples: Dropbox, Backblaze, mega.nz, self-hosted
+- Guide for securing your accounts
 
 ---
-
-## Threat Model Assumptions
-
-This guide assumes:
-- ✅ You want to protect against theft and data loss
-- ✅ You use mainstream services (email, banking, social media)
-- ✅ You can memorize a strong passphrase
-- ✅ You can invest 4-6 hours in initial setup
-- ✅ Your adversary is opportunistic or moderately sophisticated (Levels 1-3)
-
-This guide does NOT protect against:
-- ❌ Supply chain attacks on hardware
-- ❌ Compromise of password manager master infrastructure
-- ❌ Physical coercion/torture (Level 4 - requires legal/physical security)
-- ❌ Nation-state adversaries with unlimited resources (Level 5 - see Threat Scenarios)
-
-**Remember:** No amount of digital security can protect against physical coercion. If threatened, comply to preserve your life. Money and data are replaceable. You are not.
 
 ## Support & Feedback
 
